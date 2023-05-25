@@ -27,24 +27,39 @@ function drawCard() {
 
 window.addEventListener("load", (e) => {
 
+    // 1
+
+
+
+    // 2
+
+    // 3
     const draw_button = document.querySelector('.draw-button')
 
-    let baseURL = 'https://deckofcardsapi.com/api'
+    let baseURL = 'https://deckofcardsapi.com/api/deck'
 
     let deck_id = null
+    let previousOffset = 0
 
-    // Get Deck ID
-    axios.get(`${baseURL}/deck/new`)
+    // Get Deck ID - Show draw button.
+    axios.get(`${baseURL}/new/shuffle`)
     .then(res => {
-        deck_id = res.data.deck_id
-        return axios.get()
+        deck_id = res.data.deck_id;
+        draw_button.style.display = "block"
     })
-
-    // 
 
     draw_button.addEventListener('click', (e) => {
         console.log(deck_id)
+        axios.get(`${baseURL}/${deck_id}/draw/`).then(({data}) => {
+            let imgSrc = data.cards[0].image;
+            let offset = previousOffset + 10
+            console.log(imgSrc)
+            console.log(offset)
+            previousOffset = offset
+            if (data.remaining === 0) {
+                draw_button.style.display = "none"
+            }
+        })
     })
-
 
 })
