@@ -1,14 +1,3 @@
-// Models
-
-// Game
-
-
-
-// Init
-
-
-// Shuffle
-
 
 // Create Card HTML
 function createCardHTML() {
@@ -34,14 +23,28 @@ function drawCard() {
 // Create card html
 // Put card on page
 
-const draw_button = document.querySelector('.draw-button')
 
-draw_button.addEventListener('click', (e) => {
-    drawCard()
-})
 
 window.addEventListener("load", (e) => {
-    console.log("init")
-    console.log("shuffle")
-    console.log("loaded")
+
+    const draw_button = document.querySelector('.draw-button')
+
+    let baseURL = 'https://deckofcardsapi.com/api'
+
+    let deck_id = null
+
+    // Get Deck ID
+    axios.get(`${baseURL}/deck/new`)
+    .then(res => {
+        deck_id = res.data.deck_id
+        return axios.get()
+    })
+
+    // 
+
+    draw_button.addEventListener('click', (e) => {
+        console.log(deck_id)
+    })
+
+
 })
