@@ -1,0 +1,9 @@
+.shuffle-button{
+    margin: 50px;
+}
+
+.center-div {
+    background-color: lightgray; /* Optional background color */
+    margin: 50px;
+    height: 50vh;
+}
