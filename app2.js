@@ -1,5 +1,5 @@
 // Global Variables
-const draw_button = document.querySelector('.draw-button');
+const drawButton = document.querySelector('.draw-button');
 const cardArea = document.querySelector('.card-area');
 const cardsBaseURL = 'https://deckofcardsapi.com/api/deck';
 
@@ -52,19 +52,19 @@ window.addEventListener("load", (e) => {
     })
 
     // 3
-    let deck_id = null;
+    let deckId = null;
     let previousOffset = 0;
 
     // Get Deck ID - Show draw button.
     axios.get(`${cardsBaseURL}/new/shuffle`)
     .then(res => {
-        deck_id = res.data.deck_id;
-        draw_button.style.display = "block"
+        deckId = res.data.deck_id;
+        drawButton.style.display = "block"
     })
 
     // Event Listener for button click.
-    draw_button.addEventListener('click', (e) => {
-        axios.get(`${cardsBaseURL}/${deck_id}/draw/`).then(({data}) => {
+    drawButton.addEventListener('click', (e) => {
+        axios.get(`${cardsBaseURL}/${deckId}/draw/`).then(({data}) => {
 
             let imgSrc = data.cards[0].image;
             let offset = previousOffset + 60;
@@ -74,7 +74,7 @@ window.addEventListener("load", (e) => {
             previousOffset = offset;
 
             if (data.remaining === 0) {
-                draw_button.style.display = "none"
+                drawButton.style.display = "none"
             }
         })
     })
