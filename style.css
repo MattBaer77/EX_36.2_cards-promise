@@ -6,8 +6,12 @@
     margin: 50px;
 }
 
-.card-area {
-    height: 500px;
+.facts-list-div {
+    width: 300px;
+}
+
+.facts-list {
+    text-align: left;
 }
 
 .card {
