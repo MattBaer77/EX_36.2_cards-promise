@@ -3,7 +3,16 @@
 }
 
 .center-div {
-    background-color: lightgray; /* Optional background color */
     margin: 50px;
-    height: 50vh;
+}
+
+.card-area {
+    height: 500px;
+}
+
+.card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
