@@ -1,3 +1,4 @@
+// Global Variables
 const draw_button = document.querySelector('.draw-button');
 const cardArea = document.querySelector('.card-area');
 const baseURL = 'https://deckofcardsapi.com/api/deck';
@@ -16,6 +17,7 @@ function createCardHTML(imgSrc, offset) {
 
 }
 
+// On Load
 window.addEventListener("load", (e) => {
 
     // 1
@@ -28,10 +30,12 @@ window.addEventListener("load", (e) => {
     })
 
     // 2
+    // Variables just for 2
     let deckId2;
     let cardOneString;
     let cardTwoString;
 
+    // 2 Call
     axios.get(`${baseURL}/new/shuffle`)
     .then(res => {
         deckId2 = res.data.deck_id
@@ -58,6 +62,7 @@ window.addEventListener("load", (e) => {
         draw_button.style.display = "block"
     })
 
+    // Event Listener for button click.
     draw_button.addEventListener('click', (e) => {
         axios.get(`${baseURL}/${deck_id}/draw/`).then(({data}) => {
 
